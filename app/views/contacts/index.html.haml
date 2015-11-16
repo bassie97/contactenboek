@@ -1,2 +1,13 @@
 %h1 List of all contacts
 =link_to 'New contact', new_contact_path, class: 'btn btn-primary'
+%table
+  %tr
+    %th Name
+    %th phone
+  =@contacts.each do |contact|
+    %tr
+      %td= contact.name
+      %td= contact.house_phone
+      %td= contact.mobile_phone
+      %td= contact.email
+      %td= contact.avatar
