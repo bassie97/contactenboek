@@ -1,0 +1,17 @@
+.row
+  .col-md-6.col-xs-12
+    = form_for @contact do |f|
+      .form-group
+        %label Name:
+        =f.text_field :name, class: 'form-control'
+      .form-group
+        %label House phone:
+        =f.text_field :house_phone, class: 'form-control'
+      .form-group
+        %label Mobile phone:
+        =f.text_field :mobile_phone, class: 'form-control'
+        %label E-mail:
+        =f.text_field :email, class: 'form-control'
+      .form-group
+        %label Avatar
+        =f.file_field :avatar
