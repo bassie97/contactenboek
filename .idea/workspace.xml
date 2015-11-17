@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c2239682-76e2-43f1-b423-80a71e6469fb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/contacts.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/contacts.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/contacts/index.html.haml" afterPath="$PROJECT_DIR$/app/views/contacts/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/contacts/show.html.haml" afterPath="$PROJECT_DIR$/app/views/contacts/show.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/nl.yml" afterPath="$PROJECT_DIR$/config/locales/nl.yml" />
     </list>
     <ignored path="contacts.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -765,7 +758,13 @@
       <option name="project" value="LOCAL" />
       <updated>1447772936255</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add scss styling, show single contact info">
+      <created>1447774484613</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1447774484613</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
