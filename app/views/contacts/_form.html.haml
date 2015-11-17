@@ -3,15 +3,21 @@
     = form_for @contact do |f|
       .form-group
         %label Name:
-        =f.text_field :name, class: 'form-control'
+        = f.text_field :name, class: 'form-control'
       .form-group
-        %label House phone:
-        =f.text_field :house_phone, class: 'form-control'
+        = f.label :house_phone
+        = f.text_field :house_phone, class: 'form-control'
       .form-group
-        %label Mobile phone:
-        =f.text_field :mobile_phone, class: 'form-control'
-        %label E-mail:
-        =f.text_field :email, class: 'form-control'
+        = f.label :mobile_phone
+        = f.text_field :mobile_phone, class: 'form-control'
       .form-group
-        %label Avatar
-        =f.file_field :avatar
+        = f.label :email
+        = f.text_field :email, class: 'form-control'
+      .form-group
+        = f.label :date_of_birth
+        = f.date_select :date_of_birth, start_year: 1900,  class: 'form-control'
+      .form-group
+        = f.label :avatar
+        = f.file_field :avatar
+      .form-group
+        = f.submit

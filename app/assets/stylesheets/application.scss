@@ -17,3 +17,17 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.header {
+  background-repeat: no-repeat;
+  background-image: url(asset-path('header.png'));
+  position: fixed;
+  height:100px;
+  width: 100%;
+  background-size: contain;
+  margin:0px auto;
+  top: 0px;
+}
+#content-wrapper {
+  margin-top: 120px;
+}

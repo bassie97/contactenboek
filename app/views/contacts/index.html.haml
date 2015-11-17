@@ -1,14 +1,32 @@
-%h1 List of all contacts
+%h1= Contact.model_name.human.capitalize
 = link_to 'New contact', new_contact_path, class: 'btn btn-primary'
 
-%table
-  %tr
-    %th Name
-    %th phone
-  - @contacts.each do |contact|
+%table.table.table-hover
+  %thead
     %tr
-      %td= contact.name
-      %td= contact.house_phone
-      %td= contact.mobile_phone
-      %td= contact.email
-      %td= contact.avatar
+      %th Name
+      %th= Contact.human_attribute_name(:house_phone)
+      %th= Contact.human_attribute_name(:mobile_phone)
+      %th= Contact.human_attribute_name(:email)
+      %th= Contact.human_attribute_name(:date_of_birth)
+      %th= Contact.human_attribute_name(:avatar)
+
+  %tfoot
+    %tr
+      %th{colspan: 6}
+        = Contact.human_attribute_name(:there)
+        = Contact.human_attribute_name(@contacts.count == 1 ? :is : :are).downcase
+        = @contacts.count
+        #{Contact.model_name.human(count: @contacts.count).downcase}!
+  %tbody
+    - @contacts.each do |contact|
+      %tr
+        %td= contact.name
+        %td= contact.house_phone
+        %td= contact.mobile_phone
+        %td= contact.email
+        %td= contact.date_of_birth
+        %td= contact.avatar
+        %td= link_to 'Show', contact_path(contact)
+        %td= link_to 'Edit', edit_contact_path(contact)
+        %td= link_to 'Destroy', contact_path(contact)
