@@ -1,7 +1,7 @@
 %h1= Contact.model_name.human.capitalize
 = link_to 'New contact', new_contact_path, class: 'btn btn-primary'
 
-%table.table.table-hover#contacts-table
+%table#contacts-table.table.table-hover
   %thead
     %tr
       %th Name
@@ -13,20 +13,10 @@
 
   %tfoot
     %tr
-      %th{colspan: 6}
+      %th{colspan: 9}
         = Contact.human_attribute_name(:there)
         = Contact.human_attribute_name(@contacts.count == 1 ? :is : :are).downcase
         = @contacts.count
         #{Contact.model_name.human(count: @contacts.count).downcase}!
   %tbody
-    - @contacts.each do |contact|
-      %tr{data: {href: edit_contact_path(contact)}}
-        %td= contact.name
-        %td= contact.house_phone
-        %td= contact.mobile_phone
-        %td= contact.email
-        %td= contact.date_of_birth
-        %td= contact.avatar
-        %td= link_to Contact.human_attribute_name(:show), contact_path(contact)
-        %td= link_to 'Edit', edit_contact_path(contact)
-        %td= link_to 'Destroy', contact_path(contact)
+    = render @contacts

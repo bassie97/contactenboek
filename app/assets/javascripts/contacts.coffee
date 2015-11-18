@@ -6,3 +6,10 @@ $(document).on 'ready page:load', ->
     link = $(this).data('href')
     Turbolinks.visit(link)
     return
+
+  Dropzone.options.myAwesomeDropzone =
+    paramName: "file",
+    maxFilesize: 2,
+    success: (file, done) ->
+      $('#profile thead th img').attr('src', done.avatar.url)
+

@@ -211,3 +211,8 @@ en:
         adress:
           one: address
           other: addresses
+      attributes:
+        contact:
+          destroy: delete
+          sure: Are you sure?
+          errormsg: prohibited this article from being saved

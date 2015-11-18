@@ -222,3 +222,9 @@ nl:
         are: zijn
         date_of_birth: geboortedatum
         show: bekijken
+        edit: bewerken
+        destroy: verwijderen
+        back: terug
+        sure: Weet u het zeker?
+        errormsg: hebben er voor gezorgd
+        name: naam

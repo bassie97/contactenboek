@@ -1,0 +1,4 @@
+%h1= Contact.human_attribute_name(:edit).capitalize
+= image_tag @contact.avatar.url, class: "img-circle img-responsive"
+= render 'form'
+= link_to Contact.human_attribute_name(:back).capitalize, contacts_path, class: 'btn btn-primary'

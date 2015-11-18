@@ -60,6 +60,8 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     debug_inspector (0.0.2)
+    dropzonejs-rails (0.7.2)
+      rails (> 3.1)
     erubis (2.7.0)
     execjs (2.6.0)
     globalid (0.3.6)
@@ -175,6 +177,7 @@ DEPENDENCIES
   byebug
   carrierwave
   coffee-rails (~> 4.1.0)
+  dropzonejs-rails
   haml-rails (~> 0.9)
   jbuilder (~> 2.0)
   jquery-rails

@@ -1,6 +1,15 @@
 .row
   .col-md-6.col-xs-12
     = form_for @contact do |f|
+      - if @contact.errors.any?
+        .error_explanation
+          %h2
+            = pluralize(@contact.errors.count, "error")
+          %ul
+            - @contact.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = f.text_field :avatar, class: 'form-control'
       .form-group
         %label Name:
         = f.text_field :name, class: 'form-control'

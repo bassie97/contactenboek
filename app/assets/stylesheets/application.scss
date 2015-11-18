@@ -14,21 +14,58 @@
 
 /*
  * "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+ *
+ *= require dropzone/dropzone
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 .header {
   background-repeat: no-repeat;
-  background-image: url(asset-path('header.png'));
+  background-position: right;
+  background-image: asset-url('header.png');
   background-color: #3996d3;
   position: fixed;
   height:100px;
   width: 100%;
-  background-size: contain;
   margin:0px auto;
   top: 0px;
+  h1 {
+    color: white;
+    font-size: 20px;
+
+    text-align: center;
+  }
 }
 #content-wrapper {
   margin-top: 120px;
+}
+
+.table-image {
+  height: 30px;
+  width: 30px;
+}
+
+table#profile {
+  @extend .table;
+  @extend .table-bordered;
+
+  width: 20%;
+  margin: 0 auto;
+
+  thead {
+    th {
+      background-color: #dddddd;
+      border: 1px solid #ccc;
+      img {
+        margin: 10px auto;
+      }
+    }
+  }
+  td {
+    width: 50%;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
 }

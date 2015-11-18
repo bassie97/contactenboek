@@ -1,0 +1,11 @@
+%tr#contacts-table{data: {href: contact_path(contact)}}
+  %td= contact.name
+  %td= contact.house_phone
+  %td= contact.mobile_phone
+  %td= contact.email
+  %td= contact.date_of_birth
+  %td{:align => "center", :valign => "center"}
+    = image_tag contact.avatar.url, class: "img-circle img-responsive table-image"
+  %td= link_to Contact.human_attribute_name(:show), contact_path(contact), class:'btn btn-primary'
+  %td= link_to Contact.human_attribute_name(:edit), edit_contact_path(contact), class: 'btn btn-warning'
+  %td= link_to Contact.human_attribute_name(:destroy), contact_path(contact), class: 'btn btn-danger', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) }
