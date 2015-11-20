@@ -1,6 +1,13 @@
 class ContactsController < ApplicationController
   def index
-    @contacts = Contact.all
+    respond_to do |format|
+      format.html do
+        @contacts = Contact.all
+      end
+      format.json do
+        render json: Contact.query(params[:q]).as_json(:only => [:id, :name, :email, :avatar])
+      end
+    end
   end
 
   def show
@@ -45,10 +52,12 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    2.times { @contact.addresses.build}
   end
 
   def edit
     @contact = Contact.find(params[:id])
+    2.times { @contact.addresses.build}
   end
 
   private
@@ -59,8 +68,8 @@ class ContactsController < ApplicationController
       :email,
       :avatar,
       :mobile_phone,
-      :date_of_birth
-    )
+      :date_of_birth,
+      addresses_attributes: [:id, :country, :city, :street, :house_number, :address_kind, :_destroy])
   end
 
 

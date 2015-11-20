@@ -213,6 +213,6 @@ en:
           other: addresses
       attributes:
         contact:
-          destroy: delete
+          destroy: Delete
           sure: Are you sure?
           errormsg: prohibited this article from being saved

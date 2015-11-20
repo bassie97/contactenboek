@@ -6,6 +6,6 @@
   %td= contact.date_of_birth
   %td{:align => "center", :valign => "center"}
     = image_tag contact.avatar.url, class: "img-circle img-responsive table-image"
-  %td= link_to Contact.human_attribute_name(:show), contact_path(contact), class:'btn btn-primary'
-  %td= link_to Contact.human_attribute_name(:edit), edit_contact_path(contact), class: 'btn btn-warning'
-  %td= link_to Contact.human_attribute_name(:destroy), contact_path(contact), class: 'btn btn-danger', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) }
+  %td= link_to Contact.human_attribute_name(:show), contact_path(contact), class: 'btn btn-primary  glyphicon glyphicon-hand-right '
+  %td= link_to Contact.human_attribute_name(:edit), edit_contact_path(contact), class: 'btn btn-warning glyphicon glyphicon-edit'
+  %td= link_to Contact.human_attribute_name(:destroy), contact_path(contact), class: 'btn btn-danger  glyphicon glyphicon-remove', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) }

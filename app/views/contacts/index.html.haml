@@ -1,6 +1,10 @@
 %h1= Contact.model_name.human.capitalize
-= link_to 'New contact', new_contact_path, class: 'btn btn-primary'
-
+= link_to 'New contact', new_contact_path, class: 'btn btn-primary  glyphicon glyphicon-floppy-disk'
+.panel.panel-info.search
+  .panel-heading= Contact.human_attribute_name(:Search_contacts)
+  .panel-body
+    %input{:name => "info", :type => "text"}
+  %ul.list-group.collapse
 %table#contacts-table.table.table-hover
   %thead
     %tr

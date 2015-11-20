@@ -18,62 +18,62 @@
       <column id="6" parent="2" name="contact_id">
         <data-type>int(11)</data-type>
       </column>
-      <column id="7" parent="2" name="address">
+      <column id="7" parent="2" name="country">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="8" parent="2" name="country">
+      <column id="8" parent="2" name="city">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="9" parent="2" name="city">
+      <column id="9" parent="2" name="street">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="10" parent="2" name="street">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="11" parent="2" name="house_number">
+      <column id="10" parent="2" name="house_number">
         <data-type>int(11)</data-type>
       </column>
-      <column id="12" parent="2" name="created_at">
+      <column id="11" parent="2" name="created_at">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
       </column>
-      <column id="13" parent="2" name="updated_at">
+      <column id="12" parent="2" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>datetime</data-type>
+      </column>
+      <column id="13" parent="2" name="address_kind">
+        <data-type>varchar(255)</data-type>
       </column>
       <key id="14" parent="2" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="15" parent="3" name="id">
+      <column id="15" parent="3" name="name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="16" parent="3" name="house_phone">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="17" parent="3" name="email">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="18" parent="3" name="avatar">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="19" parent="3" name="created_at">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="20" parent="3" name="updated_at">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="21" parent="3" name="mobile_phone">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="22" parent="3" name="date_of_birth">
+        <data-type>date</data-type>
+      </column>
+      <column id="23" parent="3" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
-      </column>
-      <column id="16" parent="3" name="name">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="17" parent="3" name="house_phone">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="18" parent="3" name="email">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="19" parent="3" name="avatar">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="20" parent="3" name="created_at">
-        <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
-      </column>
-      <column id="21" parent="3" name="updated_at">
-        <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
-      </column>
-      <column id="22" parent="3" name="mobile_phone">
-        <data-type>varchar(255)</data-type>
-      </column>
-      <column id="23" parent="3" name="date_of_birth">
-        <data-type>date</data-type>
       </column>
       <key id="24" parent="3" name="PRIMARY">
         <columns>id</columns>

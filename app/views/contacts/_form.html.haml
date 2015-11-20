@@ -1,32 +1,52 @@
 .row
   .col-md-6.col-xs-12
-    = form_for @contact do |f|
-      - if @contact.errors.any?
-        .error_explanation
+    - if @contact.errors.any?
+      .panel.panel-danger
+        .panel-heading.error_explanation
           %h2
             = pluralize(@contact.errors.count, "error")
+        .panel-body
           %ul
             - @contact.errors.full_messages.each do |msg|
               %li= msg
-      .form-group
-        = f.text_field :avatar, class: 'form-control'
-      .form-group
-        %label Name:
-        = f.text_field :name, class: 'form-control'
-      .form-group
-        = f.label :house_phone
-        = f.text_field :house_phone, class: 'form-control'
-      .form-group
-        = f.label :mobile_phone
-        = f.text_field :mobile_phone, class: 'form-control'
-      .form-group
-        = f.label :email
-        = f.text_field :email, class: 'form-control'
-      .form-group
-        = f.label :date_of_birth
-        = f.date_select :date_of_birth, start_year: 1900,  class: 'form-control'
-      .form-group
-        = f.label :avatar
-        = f.file_field :avatar
-      .form-group
-        = f.submit
+    .panel.panel-success
+      .panel-body
+        = form_for @contact do |f|
+          .form-group
+            %label Name:
+            = f.text_field :name, class: 'form-control'
+          .form-group
+            = f.label :house_phone
+            = f.text_field :house_phone, class: 'form-control'
+          .form-group
+            %ul
+              = f.fields_for :addresses do |address_form|
+                %li
+                  = address_form.check_box :_destroy
+                  = Contact.human_attribute_name(:remove)
+                  = address_form.label Contact.human_attribute_name(:address_kind)
+                  = address_form.radio_button :address_kind, 'post-address', class: 'form-control'
+                  = address_form.radio_button :address_kind, 'house-address', class: 'form-control'
+                  %br
+                  = address_form.label Contact.human_attribute_name(:country)
+                  = address_form.text_field :country, class: 'form-control'
+                  = address_form.label Contact.human_attribute_name(:city)
+                  = address_form.text_field :city, class: 'form-control'
+                  = address_form.label Contact.human_attribute_name(:street)
+                  = address_form.text_field :street, class: 'form-control'
+                  = address_form.label Contact.human_attribute_name(:house_number)
+                  = address_form.text_field :house_number, class: 'form-control'
+          .form-group
+            = f.label :mobile_phone
+            = f.text_field :mobile_phone, class: 'form-control'
+          .form-group
+            = f.label :email
+            = f.text_field :email, class: 'form-control'
+          .form-group
+            = f.label :date_of_birth
+            = f.date_select :date_of_birth, start_year: 1900,  class: 'form-control'
+          .form-group
+            = f.label :avatar
+            = f.file_field :avatar
+          .form-group
+            = f.submit

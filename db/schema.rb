@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117143302) do
+ActiveRecord::Schema.define(version: 20151120150241) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "contact_id",   limit: 4
-    t.string   "address",      limit: 255
     t.string   "country",      limit: 255
     t.string   "city",         limit: 255
     t.string   "street",       limit: 255
     t.integer  "house_number", limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "address_kind", limit: 255
   end
+
+  add_index "addresses", ["contact_id"], name: "addresses_contacts__fk", using: :btree
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",          limit: 255

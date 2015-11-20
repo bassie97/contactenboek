@@ -213,8 +213,9 @@ nl:
         other: Adressen
     attributes:
       contact:
-        house_phone: Telefoon 1
-        mobile_phone: Telefoon 2
+        new: Nieuw
+        house_phone: Telefoon
+        mobile_phone: Mobiel
         email: E-mail
         avatar: Profiel afbeelding
         there: Er
@@ -228,3 +229,10 @@ nl:
         sure: Weet u het zeker?
         errormsg: hebben er voor gezorgd
         name: naam
+        search_contacts: Contact zoeken
+        remove: verwijderen
+        country: Land
+        city: Stad
+        street: Straat
+        house_number: nummer/toevoeging
+        address_kind: Address type

@@ -1,11 +1,9 @@
-.pull-left
-  = form_tag contact_path(@contact), method: 'patch', id: 'my-awesome-dropzone', class: 'dropzone'
-
 %table#profile
   %thead
     %tr
       %th{colspan: 2}
         = image_tag @contact.avatar.url, class: "img-circle img-responsive"
+        = form_tag contact_path(@contact), method: 'patch', id: 'my-awesome-dropzone', class: 'dropzone'
   %tbody
     - [:name, :house_phone, :mobile_phone, :email].each do |attr|
       %tr
@@ -14,8 +12,11 @@
     %tr
       %th= Contact.human_attribute_name(:date_of_birth)
       %td= l @contact.date_of_birth, format: :long
+
+    - @contact.addresses.each do |address|
+      %tr
+        %td= address.country
+        %td= address.city
+        %td= address.street
+        %td= address.house_number
 = link_to 'Back', contacts_path, class: 'btn btn-primary'
-
-
-
-
