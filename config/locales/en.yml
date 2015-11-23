@@ -216,3 +216,8 @@ en:
           destroy: Delete
           sure: Are you sure?
           errormsg: prohibited this article from being saved
+          remove: Remove address
+          visit_address: Bezoekadres
+          mail_address: Postadres
+          edit: Edit
+          new: New

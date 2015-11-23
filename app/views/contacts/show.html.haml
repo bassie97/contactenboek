@@ -15,8 +15,6 @@
 
     - @contact.addresses.each do |address|
       %tr
-        %td= address.country
-        %td= address.city
-        %td= address.street
-        %td= address.house_number
+        %th= Contact.human_attribute_name(address.address_kind)
+        %td= address.country + ", " + address.city + ", " + address.street + ", " + address.house_number.to_s
 = link_to 'Back', contacts_path, class: 'btn btn-primary'
