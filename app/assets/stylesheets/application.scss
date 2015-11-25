@@ -93,3 +93,25 @@ table#profile {
   @extend .panel-success;
   @extend .panel-body;
 }
+
+.si{
+  float: left;
+  margin-right: 5px;
+  width:40px;
+  height:40px;
+}
+
+.st{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 134px;
+}
+.help-block{
+  display: none;
+}
+.field_with_errors {
+  color: red;
+  input[type=text] {
+    border: 1px solid red;
+  }
+}

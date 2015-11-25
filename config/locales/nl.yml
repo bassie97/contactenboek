@@ -230,9 +230,12 @@ nl:
         errormsg: hebben er voor gezorgd
         name: naam
         search_contacts: Contact zoeken
+      address:
         remove: Verwijder adres
+        add_address: Adres toevoegen
         country: Land
         city: Stad
         street: Straat
         house_number: nummer/toevoeging
         address_kind: Address type
+        zip_code: Postcode

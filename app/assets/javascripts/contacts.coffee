@@ -66,5 +66,5 @@ addValidator = ->
       $(this).next('.help-block').hide()
   $(".edit_contact :input").on 'invalid', (e)->
     errorMessage = $(this).data("error")
-    e.target.setCustomValidity("")
-    e.target.setCustomValidity(errorMessage) unless e.target.validity.valid
+#    e.target.setCustomValidity("")
+ #   e.target.setCustomValidity("test") unless e.target.validity.valid

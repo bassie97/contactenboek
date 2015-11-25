@@ -12,35 +12,15 @@
 .contact_form
   = form_for @contact do |f|
     .form-group
-      %label Name:
+      %label= Contact.human_attribute_name(:name).capitalize
       = f.text_field :name, class: 'form-control'
       .form-group
-        .row
-          = f.fields_for :addresses do |address_form|
-            .col-md-4.col-md-offset-1.col-sx-12
-              .form-group
-                .form-inline
-                  .checkbox
-                    = address_form.label Contact.human_attribute_name(:remove)
-                    = address_form.check_box :_destroy, class: 'form-control'
-              .form-group
-                .form-inline
-                  .radio
-                    .table
-                      %tbody
-                        %tr
-                          %td
-                            = Contact.human_attribute_name(:mail_address)
-                          %td
-                            = address_form.radio_button :address_kind, 'mail_address', class: 'form-control'
-                          %td
-                            = Contact.human_attribute_name(:visit_address)
-                          %td
-                            = address_form.radio_button :address_kind, 'visit_address', class: 'form-control'
-              - [:country, :city, :street, :house_number, :zip_code].each do |attr|
-                .form-group
-                  = address_form.label Contact.human_attribute_name(attr)
-                  = address_form.text_field attr, class: 'form-control'
+        %label= Contact.human_attribute_name(:add_address)
+        = add_child_button("<i class='glyphicon glyphicon-plus'></i>", :addresses, "addresses")
+        #addresses
+          = f.fields_for :addresses do |builder|
+            = render "address_fields", :f => builder
+        = new_fields_template f, :addresses
     - [:house_phone, :mobile_phone, :email].each do |attr|
       .form-group
         = f.label attr

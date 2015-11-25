@@ -52,12 +52,12 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
-    2.times { @contact.addresses.build}
+    #2.times { @contact.addresses.build}
   end
 
   def edit
     @contact = Contact.find(params[:id])
-    2.times { @contact.addresses.build}
+    #2.times { @contact.addresses.build}
   end
 
   private
