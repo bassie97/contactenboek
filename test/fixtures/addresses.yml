@@ -1,17 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  [contact_id: 1
-  address: MyString
+  contact_id: 1
+  street: MyString
   country: MyString
   city: MyString
   street: MyString
-  house_number: 
-
+  house_number:
 two:
-  [contact_id: 1
-  address: MyString
+  contact_id: 1
+  street: MyString
   country: MyString
   city: MyString
   street: MyString
-  house_number: 
+  house_number:

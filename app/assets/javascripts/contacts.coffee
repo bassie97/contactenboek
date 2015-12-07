@@ -40,6 +40,9 @@ $(document).on 'ready page:load', ->
     else
       $(".collapse").html('').collapse('hide')
 
+  $(document).on 'click', ->
+    $(".collapse").html('').collapse('hide')
+
   $('.add_child').click ->
     association = $(this).attr('data-association')
     target = $(this).attr('target')

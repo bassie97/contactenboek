@@ -5,6 +5,7 @@ class Contact < ActiveRecord::Base
 
   validates :name, presence: true
   validates :email, :email => true
+  validates :email, uniqueness: true
 
 
   mount_uploader :avatar, AvatarUploader

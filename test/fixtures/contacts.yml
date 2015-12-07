@@ -1,7 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  [name: 
-
+  name: "Test User"
 two:
-  [name: 
+  name: "Test User2"
