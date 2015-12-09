@@ -1,5 +1,5 @@
-%h1= Contact.human_attribute_name(:new).capitalize
-
-= render 'form'
-
-= link_to Contact.human_attribute_name(:back).capitalize, contacts_path, class: 'btn btn-primary'
+.formwrapper
+  .panel-heading
+    %h1= Contact.human_attribute_name(:new).capitalize
+    = render 'form'
+    = link_to Contact.human_attribute_name(:back).capitalize, contacts_path, class: 'btn btn-primary'

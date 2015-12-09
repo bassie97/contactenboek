@@ -1,12 +1,11 @@
-%h1= Contact.model_name.human.capitalize
-= link_to 'New contact', new_contact_path, class: 'btn btn-primary  glyphicon glyphicon-floppy-disk'
-.panel.panel-info.search
-  .panel-heading= Contact.human_attribute_name(:Search_contacts)
-  .panel-body
-    %h1 bla bla
-    %input{:name => "info", :type => "text"}
-  %ul.list-group.collapse
-%table#contacts-table.table.table-hover
+.row
+  .col-md-12
+    .new-contact
+      %a.btn.btn-primary{href: new_contact_path}
+        %span.glyphicon.glyphicon-user{"aria-hidden" => "true"}
+        =Contact.human_attribute_name(:new)
+      -#= link_to Contact.human_attribute_name(:new), new_contact_path, class: 'btn btn-primary glyphicon glyphicon-floppy-disk'
+%table#contacts-table.table.table-bordered.table-hover
   %thead
     %tr
       %th Name
@@ -15,6 +14,8 @@
       %th= Contact.human_attribute_name(:email)
       %th= Contact.human_attribute_name(:date_of_birth)
       %th= Contact.human_attribute_name(:avatar)
+      %th.actions{colspan: 3}
+        = Contact.human_attribute_name(:actions)
 
   %tfoot
     %tr
@@ -24,4 +25,4 @@
         = @contacts.count
         #{Contact.model_name.human(count: @contacts.count).downcase}!
   %tbody
-    = render @contacts
+    = render @contacts.order(name: :asc)

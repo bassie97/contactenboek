@@ -213,6 +213,7 @@ en:
           other: addresses
       attributes:
         contact:
+          title: My contactsbook
           destroy: Delete
           sure: Are you sure?
           errormsg: prohibited this article from being saved
@@ -220,4 +221,4 @@ en:
           visit_address: Bezoekadres
           mail_address: Postadres
           edit: Edit
-          new: New
+          new: New addressbookitem

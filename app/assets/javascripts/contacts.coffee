@@ -2,10 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'ready page:load', ->
-  $(document).on 'click', '#contacts-table tr', ->
+  $(document).on 'click', '#contacts-table tbody tr', ->
     link = $(this).data('href')
-    Turbolinks.visit(link)
+    console.log("test")
+    window.location = link
     return
+  $(document).on 'click', '#contacts-table tbody tr a', (e)->
+    e.stopPropagation()
 
   $(document).on 'click', '#collapse li', ->
     link = $(this).data('href')
@@ -26,7 +29,7 @@ $(document).on 'ready page:load', ->
         data: q: $("input[name='info']").val())
       .done (msg) ->
         console.log msg
-        $(".collapse").html('')
+        $("#testtest").html('')
         $.each(msg, (index, item) ->
           link = $('<a>')
           link.attr('href', '/contacts/' + item.id)
@@ -34,14 +37,14 @@ $(document).on 'ready page:load', ->
                     "<div class='st'>"  +
                       ' ' + item.name + '<br>' + item.email +
                     "</div>").addClass('list-group-item')
-          $(".collapse").append(link)
+          $("#testtest").append(link)
         )
-        $(".collapse").collapse('show')
+        $("#testtest").collapse('show')
     else
-      $(".collapse").html('').collapse('hide')
+      $("#testtest").html('').collapse('hide')
 
   $(document).on 'click', ->
-    $(".collapse").html('').collapse('hide')
+    $("#testtest").html('').collapse('hide')
 
   $('.add_child').click ->
     association = $(this).attr('data-association')

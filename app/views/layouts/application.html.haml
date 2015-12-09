@@ -1,4 +1,3 @@
-!!!
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
@@ -9,6 +8,27 @@
 
   %body
     .header
-      %h1 Mijn contactboek
+      %h1
+        =Contact.human_attribute_name(:title)
+    %nav.navbar-primary.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{:style =>"z-index= 900000", "aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          .navbar-brand.btn-lg
+            %span.glyphicon.glyphicon-education
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li
+              =link_to "Home", contacts_path
+            %li
+              =link_to Contact.human_attribute_name(:new), new_contact_path
+          .navbar-form.navbar-right{:role => "search"}
+            .form-group
+              %input#search{:name => "info", :type => "text", placeholder: Contact.human_attribute_name(:search_contacts)}
+                #testtest.dropdown-menu.collapse
     #content-wrapper.container-fluid
       = yield

@@ -213,7 +213,10 @@ nl:
         other: Adressen
     attributes:
       contact:
-        new: Nieuw
+        actions: Acties
+        title: Mijn contactenboek
+        new: Nieuw adresboekitem
+        back: Terug
         house_phone: Telefoon
         mobile_phone: Mobiel
         email: E-mail
@@ -222,9 +225,9 @@ nl:
         is: is
         are: zijn
         date_of_birth: geboortedatum
-        show: bekijken
-        edit: bewerken
-        destroy: verwijderen
+        show: Bekijken
+        edit: Bewerken
+        destroy: Verwijderen
         back: terug
         sure: Weet u het zeker?
         errormsg: hebben er voor gezorgd

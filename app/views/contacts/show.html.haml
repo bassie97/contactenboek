@@ -17,4 +17,4 @@
       %tr
         %th= address.address_kind
         %td= address.full_address
-= link_to 'Back', contacts_path, class: 'btn btn-primary'
+= link_to Contact.human_attribute_name(:back).capitalize, contacts_path, class: 'btn btn-primary'

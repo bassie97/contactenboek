@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Welcome to first-mail.com, #{@contact.name}
+    %p
+      I have succesfully delivered my first email to you using application_mailer
+      %br/
+    %p
+      To login to the site, just follow this link: #{@ulr}.
+    %p Thanks for joining and have a great day!

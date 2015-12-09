@@ -16,10 +16,19 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    if @contact.save
-      redirect_to contacts_path
-    else
-      render :new
+
+    respond_to do |format|
+      if @contct.save
+        # Tell the UserMailer to send a welcome email after save
+        emailer.first_mail(@contact).deliver_later
+
+        format.html { redirect_to(contacts_path, notice: 'User was successfully created.') }
+        format.json { render json: @contact, status: :created, location: contacts_path }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
+
+      end
     end
   end
 
@@ -40,7 +49,6 @@ class ContactsController < ApplicationController
         render json: @contact.avatar
       end
     end
-
   end
 
   def destroy
@@ -71,6 +79,4 @@ class ContactsController < ApplicationController
       :date_of_birth,
       addresses_attributes: [:id, :country, :city, :street, :house_number, :address_kind, :zip_code, :_destroy])
   end
-
-
 end
