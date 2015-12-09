@@ -16,21 +16,29 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-
-    respond_to do |format|
-      if @contct.save
-        # Tell the UserMailer to send a welcome email after save
-        emailer.first_mail(@contact).deliver_later
-
-        format.html { redirect_to(contacts_path, notice: 'User was successfully created.') }
-        format.json { render json: @contact, status: :created, location: contacts_path }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-
-      end
+    if @contact.save
+      redirect_to contacts_path
+    else
+      render :new
     end
   end
+  # def create
+  #   @contact = Contact.new(contact_params)
+  #
+  #   respond_to do |format|
+  #     if @contact.save
+  #       # Tell the UserMailer to send a welcome email after save
+  #       Emailer.first_mail(@contact).deliver_later
+  #
+  #       format.html { redirect_to(contacts_path, notice: 'User was successfully created.') }
+  #       format.json { render json: @contact, status: :created, location: contacts_path }
+  #     else
+  #       format.html { render action: 'new' }
+  #       format.json { render json: @contact.errors, status: :unprocessable_entity }
+  #
+  #     end
+  #   end
+  # end
 
   def update
     @contact = Contact.find(params[:id])

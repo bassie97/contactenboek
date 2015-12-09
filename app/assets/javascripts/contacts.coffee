@@ -1,11 +1,14 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on "page:change", ->
+  $("#my-awesome-dropzone").dropzone()
+
 $(document).on 'ready page:load', ->
   $(document).on 'click', '#contacts-table tbody tr', ->
     link = $(this).data('href')
     console.log("test")
-    window.location = link
+    Turbolinks.visit(link)
     return
   $(document).on 'click', '#contacts-table tbody tr a', (e)->
     e.stopPropagation()

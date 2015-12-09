@@ -7,17 +7,23 @@
   %td{:align => "center", :valign => "center"}
     = image_tag contact.avatar.url, class: "img-circle img-responsive table-image"
   %td
-    %a.btn.btn-primary{href: contact_path(contact)}
+    -#%a.btn.btn-primary{href: contact_path(contact)}
+    -#  %span.glyphicon.glyphicon-hand-right
+    -#  =Contact.human_attribute_name(:show)
+    = link_to contact_path(contact), class: 'btn btn-primary' do
       %span.glyphicon.glyphicon-hand-right
-      =Contact.human_attribute_name(:show)
-    -#= link_to Contact.human_attribute_name(:show), contact_path(contact), class: 'btn btn-primary  glyphicon glyphicon-hand-right '
+      = Contact.human_attribute_name(:show)
   %td
-    %a.btn.btn-warning{href: edit_contact_path(contact)}
+    -#%a.btn.btn-warning{href: edit_contact_path(contact)}
+    -#  %span.glyphicon.glyphicon-edit
+    -#  =Contact.human_attribute_name(:edit)
+    = link_to edit_contact_path(contact), class: 'btn btn-warning' do
       %span.glyphicon.glyphicon-edit
-      =Contact.human_attribute_name(:edit)
-    -#= link_to Contact.human_attribute_name(:edit), edit_contact_path(contact), class: 'btn btn-warning glyphicon glyphicon-edit'
+      = Contact.human_attribute_name(:edit)
   %td
-    %a.btn.btn-danger{href: contact_path(contact), method: :delete, data: { confirm: Contact.human_attribute_name(:sure)}}
+    -#%a.btn.btn-danger{href: contact_path(contact), data: {method: :delete, confirm: Contact.human_attribute_name(:sure)}}
+    -#  %span.glyphicon.glyphicon-remove
+    -#  =Contact.human_attribute_name(:destroy)
+    = link_to contact_path(contact), class: 'btn btn-danger', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) } do
       %span.glyphicon.glyphicon-remove
-      =Contact.human_attribute_name(:destroy)
-    -#= link_to Contact.human_attribute_name(:destroy), contact_path(contact), class: 'btn btn-danger  glyphicon glyphicon-remove', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) }
+      = Contact.human_attribute_name(:destroy)
