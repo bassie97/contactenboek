@@ -1,4 +1,4 @@
-class ContactsController < ApplicationController
+class ContactsController < UserController
   before_action :contact, except: [:index, :new, :create]
   before_action :email_params, only: :email
 

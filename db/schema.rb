@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210134319) do
+ActiveRecord::Schema.define(version: 20151210145837) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "contact_id",   limit: 4
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 20151210134319) do
     t.datetime "updated_at",                null: false
     t.string   "mobile_phone",  limit: 255
     t.date     "date_of_birth"
+  end
+
+  create_table "overs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
