@@ -12,6 +12,8 @@ gem 'haml-rails', '~> 0.9'
 gem 'carrierwave'
 gem 'dropzonejs-rails'
 gem 'email_validator'
+gem 'devise'
+gem 'devise-bootstrap-views'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

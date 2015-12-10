@@ -1,14 +1,3 @@
-- if @contact.errors.any?
-  .row
-    .col-md-6.col-xs-12
-      .panel.panel-danger
-        .panel-heading.error_explanation
-          %h2
-            = pluralize(@contact.errors.count, "error")
-        .panel-body
-          %ul
-            - @contact.errors.full_messages.each do |msg|
-              %li= msg
 .contact_form
   .panel-body
     = form_for @contact do |f|

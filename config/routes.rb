@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :contacts
+  devise_for :users
+  resources :contacts do
+    member do
+      post :email
+    end
+  end
+
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

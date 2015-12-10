@@ -16,6 +16,7 @@
  * "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
  *
  *= require dropzone/dropzone
+ *= require devise_bootstrap_views
  */
 
 @import "bootstrap-sprockets";
@@ -57,7 +58,11 @@ table#profile {
       background-color: #dddddd;
       border: 1px solid #ccc;
       img {
-        margin: 10px auto;
+        //margin: 10px auto;
+        position: relative;
+        margin-bottom: 10px;
+        margin-left: 50%;
+        transform: translatex(-50%);
       }
     }
   }
@@ -75,6 +80,13 @@ table#profile {
 .contact_form {
   @extend .panel;
   @extend .panel-success;
+}
+.email-form {
+  @extend .panel;
+  @extend .panel-info;
+  .panel-heading{
+    background-color: #BCE8F1;
+  }
 }
 
 .si{
@@ -139,8 +151,30 @@ table#profile {
   text-align: center;
   }
   img {
-    ;
+      //margin: 10px auto;
+      position: relative;
+      margin-bottom: 10px;
+      margin-left: 50%;
+      transform: translatex(-50%);
   }
   width: 50%;
   margin: 0 auto;
+}
+.email-panel {
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  //margin-left: 90%;
+  margin-top: 10px;
+  //float: right !important;
+}
+.btn-info {
+  background-color: #a0adb7;
+  border-color: #a0adb7;
+}
+.btn-info:focus, .btn-info:hover {
+  background-color: #337AB7;
+}
+.alert {
+  display: none;
 }

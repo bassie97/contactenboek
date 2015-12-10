@@ -1,3 +1,9 @@
+.email-panel
+  %button.btn.btn-info{"data-target" => "#email-form", "data-toggle" => "collapse", :type => "button"}
+    %span.glyphicon.glyphicon-envelope
+    = Contact.human_attribute_name(:send_email).capitalize
+  .collapse#email-form
+    = render 'email'
 %table#profile
   %thead
     %tr

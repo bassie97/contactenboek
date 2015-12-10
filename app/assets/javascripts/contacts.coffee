@@ -28,11 +28,11 @@ $(document).on 'ready page:load', ->
     if $(this).val() != ''
       $.ajax(
         method: 'GET'
-        url: 'contacts.json'
+        url: '/contacts.json'
         data: q: $("input[name='info']").val())
       .done (msg) ->
         console.log msg
-        $("#testtest").html('')
+        $("#contact-search").html('')
         $.each(msg, (index, item) ->
           link = $('<a>')
           link.attr('href', '/contacts/' + item.id)
@@ -40,14 +40,14 @@ $(document).on 'ready page:load', ->
                     "<div class='st'>"  +
                       ' ' + item.name + '<br>' + item.email +
                     "</div>").addClass('list-group-item')
-          $("#testtest").append(link)
+          $("#contact-search").append(link)
         )
-        $("#testtest").collapse('show')
+        $("#contact-search").collapse('show')
     else
-      $("#testtest").html('').collapse('hide')
+      $("#contact-search").html('').collapse('hide')
 
   $(document).on 'click', ->
-    $("#testtest").html('').collapse('hide')
+    $("#contact-search").html('').collapse('hide')
 
   $('.add_child').click ->
     association = $(this).attr('data-association')
@@ -60,9 +60,13 @@ $(document).on 'ready page:load', ->
     false
 
   $(document).delegate '.remove_child', 'click', ->
-    if $(this).closest('.address').children('.removable')[0]
+    if $(this).closest('.address')  .children('.removable')[0]
       $(this).closest('.address').children('.removable')[0].value = 1
     $(this).closest('.address').hide()
+    return
+
+  $('.alert').slideDown 'slow', ->
+    setTimeout("$('.alert').slideUp('slow')", 5000)
     return
 
 addValidator = ->
@@ -75,5 +79,3 @@ addValidator = ->
       $(this).next('.help-block').hide()
   $(".edit_contact :input").on 'invalid', (e)->
     errorMessage = $(this).data("error")
-#    e.target.setCustomValidity("")
- #   e.target.setCustomValidity("test") unless e.target.validity.valid

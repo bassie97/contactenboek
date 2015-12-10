@@ -1,0 +1,19 @@
+.email-form
+  = form_tag email_contact_path(@contact) do
+    .form-inline
+      = hidden_field_tag 'mail[email]', @contact.email
+      .panel-heading
+        %h3.panel-title
+          Send email.
+        .form-group
+          %label= Contact.human_attribute_name(:to).capitalize
+          .form-control-static
+            = @contact.email
+        .form-group
+          %label= Contact.human_attribute_name(:subject).capitalize
+          = text_field_tag 'mail[subject]', '', class: 'form-control'
+    .panel-body
+      .form-group
+        = text_area_tag 'mail[message]', '', class: 'form-control', placeholder: 'bericht', rows: 5
+      = submit_tag 'Versturen', class:'btn btn-default'
+

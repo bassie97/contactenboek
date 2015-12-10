@@ -29,6 +29,8 @@
           .navbar-form.navbar-right{:role => "search"}
             .form-group
               %input#search{:name => "info", :type => "text", placeholder: Contact.human_attribute_name(:search_contacts)}
-                #testtest.dropdown-menu.collapse
+                .dropdown-menu.collapse#contact-search
     #content-wrapper.container-fluid
+      = render_flash
       = yield
+

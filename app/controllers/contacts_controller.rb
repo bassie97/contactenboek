@@ -1,4 +1,9 @@
 class ContactsController < ApplicationController
+  before_action :contact, except: [:index, :new, :create]
+  before_action :email_params, only: :email
+
+  include ContactsHelper
+
   def index
     respond_to do |format|
       format.html do
@@ -11,7 +16,7 @@ class ContactsController < ApplicationController
   end
 
   def show
-    @contact = Contact.find(params[:id])
+
   end
 
   def create
@@ -19,30 +24,13 @@ class ContactsController < ApplicationController
     if @contact.save
       redirect_to contacts_path
     else
+      error = @contact.errors.full_messages.to_sentence
+      flash.now[:error] = error
       render :new
     end
   end
-  # def create
-  #   @contact = Contact.new(contact_params)
-  #
-  #   respond_to do |format|
-  #     if @contact.save
-  #       # Tell the UserMailer to send a welcome email after save
-  #       Emailer.first_mail(@contact).deliver_later
-  #
-  #       format.html { redirect_to(contacts_path, notice: 'User was successfully created.') }
-  #       format.json { render json: @contact, status: :created, location: contacts_path }
-  #     else
-  #       format.html { render action: 'new' }
-  #       format.json { render json: @contact.errors, status: :unprocessable_entity }
-  #
-  #     end
-  #   end
-  # end
 
   def update
-    @contact = Contact.find(params[:id])
-
     respond_to do |format|
       format.html do
         if @contact.update(contact_params)
@@ -60,7 +48,6 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    @contact = Contact.find(params[:id])
     @contact.destroy
 
     redirect_to contacts_path
@@ -68,15 +55,32 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
-    #2.times { @contact.addresses.build}
   end
 
   def edit
-    @contact = Contact.find(params[:id])
-    #2.times { @contact.addresses.build}
+  end
+
+  def email
+    email = params[:mail][:email]
+    # controleer of emailadres geldig is
+    if email.match(/\A[^@]+@([^@\.]+\.)+[^@\.]+\z/)
+      Emailer.first_mail(params[:mail]).deliver
+      flash[:success] = Contact.human_attribute_name(:email_send)
+    else
+      flash[:error] = Contact.human_attribute_name(:email_invalid)
+    end
+    redirect_to @contact
   end
 
   private
+  def contact
+    @contact = Contact.find(params[:id])
+  end
+
+  def email_params
+    params.require(:mail).permit(:email, :subject, :message)
+  end
+
   def contact_params
     params.require(:contact).permit(
       :name,
