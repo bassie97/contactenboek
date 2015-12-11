@@ -2,6 +2,7 @@
   = form_tag email_contact_path(@contact) do
     .form-inline
       = hidden_field_tag 'mail[email]', @contact.email
+      = hidden_field_tag 'mail[from]', current_user.email
       .panel-heading
         %h3.panel-title
           Send email.

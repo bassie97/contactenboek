@@ -8,6 +8,9 @@
         = f.label :email
         = f.email_field :email, autofocus: true, class: "form-control"
       .form-group
+        = f.label :name
+        = f.text_field :name, class: "form-control"
+      .form-group
         = f.label :password
         %i
           (#{t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it")})

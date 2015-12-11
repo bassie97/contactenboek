@@ -66,7 +66,7 @@ $(document).on 'ready page:load', ->
     return
 
   $('.alert').slideDown 'slow', ->
-    setTimeout("$('.alert-success, .alert-warning' ).slideUp('slow')", 5000)
+    setTimeout("$('.alert-success, .alert-warning, .alert-info' ).slideUp('slow')", 5000)
     return
 
 addValidator = ->

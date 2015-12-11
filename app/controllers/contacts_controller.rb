@@ -1,4 +1,4 @@
-class ContactsController < UserController
+class ContactsController < UsersController
   before_action :contact, except: [:index, :new, :create]
   before_action :email_params, only: :email
 
@@ -7,10 +7,10 @@ class ContactsController < UserController
   def index
     respond_to do |format|
       format.html do
-        @contacts = Contact.all
+        @contacts = current_user.contacts
       end
       format.json do
-        render json: Contact.query(params[:q]).as_json(:only => [:id, :name, :email, :avatar])
+        render json: current_user.contacts.query(params[:q]).as_json(:only => [:id, :name, :email, :avatar])
       end
     end
   end
@@ -20,7 +20,7 @@ class ContactsController < UserController
   end
 
   def create
-    @contact = Contact.new(contact_params)
+    @contact = current_user.contacts.new(contact_params)
     if @contact.save
       redirect_to contacts_path
     else
@@ -54,7 +54,7 @@ class ContactsController < UserController
   end
 
   def new
-    @contact = Contact.new
+    @contact = current_user.contacts.new
   end
 
   def edit
@@ -74,7 +74,7 @@ class ContactsController < UserController
 
   private
   def contact
-    @contact = Contact.find(params[:id])
+    @contact = current_user.contacts.find(params[:id])
   end
 
   def email_params
@@ -89,6 +89,7 @@ class ContactsController < UserController
       :avatar,
       :mobile_phone,
       :date_of_birth,
+      :user_id,
       addresses_attributes: [:id, :country, :city, :street, :house_number, :address_kind, :zip_code, :_destroy])
   end
 end

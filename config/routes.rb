@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
+
   resources :contacts do
     member do
       post :email
@@ -9,6 +11,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'over/index' => 'over#index'
 
+  resources :users
+
+  # devise_for :users, :controllers => { registrations: 'registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
