@@ -198,6 +198,7 @@ DEPENDENCIES
   dropzonejs-rails
   email_validator
   haml-rails (~> 0.9)
+  html2haml
   jbuilder (~> 2.0)
   jquery-rails
   mysql2 (>= 0.3.13, < 0.5)
