@@ -5,6 +5,7 @@ $(document).on "page:change", ->
   $("#my-awesome-dropzone").dropzone()
 
 $(document).on 'ready page:load', ->
+#  addValidator()
   $(document).on 'click', '#contacts-table tbody tr', ->
     link = $(this).data('href')
     console.log("test")
@@ -69,13 +70,13 @@ $(document).on 'ready page:load', ->
     setTimeout("$('.alert-success, .alert-warning, .alert-info' ).slideUp('slow')", 5000)
     return
 
-addValidator = ->
-  $(".edit_contact :input").on 'blur', (e)->
+#  addValidator = ->
+  $(":input").on 'blur', (e)->
     unless e.target.validity.valid
       $(this).css('border', '1px solid red')
       $(this).next('.help-block').show()
     else
       $(this).css('border', '1px solid #ccc')
       $(this).next('.help-block').hide()
-  $(".edit_contact :input").on 'invalid', (e)->
+  $(":input").on 'invalid', (e)->
     errorMessage = $(this).data("error")

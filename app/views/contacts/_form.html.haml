@@ -2,10 +2,10 @@
   .panel-body
     = form_for @contact do |f|
       .form-group
-        %label= Contact.human_attribute_name(:name).capitalize
+        = f.label Contact.human_attribute_name(:name).capitalize
         = f.text_field :name, class: 'form-control'
         .form-group
-          %label= Contact.human_attribute_name(:add_address)
+          = f.label Contact.human_attribute_name(:add_address)
           = add_child_button("<i class='glyphicon glyphicon-plus'></i>", :addresses, "addresses")
           #addresses
             = f.fields_for :addresses do |builder|
@@ -13,7 +13,7 @@
           = new_fields_template f, :addresses
       - [:house_phone, :mobile_phone, :email].each do |attr|
         .form-group
-          = f.label attr
+          = f.label Contact.human_attribute_name(attr).capitalize
           = f.text_field attr, class: 'form-control'
       .form-group
         = f.label :date_of_birth

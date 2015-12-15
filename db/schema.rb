@@ -11,21 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211124550) do
+ActiveRecord::Schema.define(version: 20151214154332) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer  "contact_id",   limit: 4
-    t.string   "country",      limit: 255
-    t.string   "city",         limit: 255
-    t.string   "street",       limit: 255
-    t.integer  "house_number", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "address_kind", limit: 255
-    t.string   "zip_code",     limit: 255
+    t.string   "country",          limit: 255
+    t.string   "city",             limit: 255
+    t.string   "street",           limit: 255
+    t.integer  "house_number",     limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "address_kind",     limit: 255
+    t.string   "zip_code",         limit: 255
+    t.integer  "addressable_id",   limit: 4
+    t.string   "addressable_type", limit: 255
   end
 
-  add_index "addresses", ["contact_id"], name: "addresses_contacts__fk", using: :btree
+  add_index "addresses", ["addressable_id"], name: "index_addresses_on_addressable_id", using: :btree
 
   create_table "contacts", force: :cascade do |t|
     t.string   "name",          limit: 255
@@ -42,18 +43,6 @@ ActiveRecord::Schema.define(version: 20151211124550) do
   create_table "overs", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_addresses", force: :cascade do |t|
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "user_id",      limit: 4
-    t.text     "country",      limit: 65535
-    t.text     "city",         limit: 65535
-    t.text     "street",       limit: 65535
-    t.integer  "house_number", limit: 4
-    t.text     "address_kind", limit: 65535
-    t.text     "zip_code",     limit: 65535
   end
 
   create_table "users", force: :cascade do |t|

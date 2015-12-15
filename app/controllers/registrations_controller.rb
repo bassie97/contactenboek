@@ -32,7 +32,7 @@ class RegistrationsController < Devise::RegistrationsController
         :date_of_birth,
         :password,
         :password_confirmation,
-        user_addresses_attributes: [:id, :country, :city, :street, :house_number, :address_kind, :zip_code, :_destroy])
+        addresses_attributes: [:id, :country, :city, :street, :house_number, :address_kind, :zip_code, :_destroy])
   end
 
   def account_update_params
@@ -46,6 +46,6 @@ class RegistrationsController < Devise::RegistrationsController
         :password,
         :password_confirmation,
         :current_password,
-        user_addresses_attributes: [:id, :country, :city, :street, :house_number, :address_kind, :zip_code, :_destroy])
+        addresses_attributes: [:id, :country, :city, :street, :house_number, :address_kind, :zip_code, :_destroy])
   end
 end

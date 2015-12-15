@@ -1,30 +1,3 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$(document).on 'ready page:load', ->
-  $('.add_child').click ->
-    association = $(this).attr('data-association')
-    target = $(this).attr('target')
-    regexp = new RegExp('new_' + association, 'g')
-    new_id = (new Date).getTime()
-    Dest = if target == '' then $(this).parent() else $('#' + target)
-    Dest.append window[association + '_fields'].replace(regexp, new_id)
-    addValidator()
-    false
-
-  $(document).delegate '.remove_child', 'click', ->
-    if $(this).closest('.address')  .children('.removable')[0]
-      $(this).closest('.address').children('.removable')[0].value = 1
-    $(this).closest('.address').hide()
-    return
-
-addValidator = ->
-  $(".edit_contact :input").on 'blur', (e)->
-    unless e.target.validity.valid
-      $(this).css('border', '1px solid red')
-      $(this).next('.help-block').show()
-    else
-      $(this).css('border', '1px solid #ccc')
-      $(this).next('.help-block').hide()
-  $(".edit_contact :input").on 'invalid', (e)->
-    errorMessage = $(this).data("error")

@@ -30,6 +30,6 @@ class UsersController < ApplicationController
         :avatar,
         :mobile_phone,
         :date_of_birth,
-        user_addresses_attributes: [:id, :country, :city, :street, :house_number, :address_kind, :zip_code, :_destroy])
+        addresses_attributes: [:id, :country, :city, :street, :house_number, :address_kind, :zip_code, :_destroy])
   end
 end

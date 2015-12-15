@@ -1,28 +1,17 @@
 = bootstrap_devise_error_messages!
-.panel.panel-default
-  .panel-heading
-    %h4= t('.sign_up', :default => "Sign up")
-  .panel-body
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form" }) do |f|
-      .form-group
-        = f.label Contact.human_attribute_name(:name).capitalize
-        = f.text_field :name, class: 'form-control'
-      .form-group
-        %label= Contact.human_attribute_name(:add_address)
-        = add_child_button("<i class='glyphicon glyphicon-plus'></i>", :user_addresses, "user_addresses")
-        #user_addresses
-          = f.fields_for :user_addresses do |builder|
-            = render "user_address_fields", :f => builder
-        = new_fields_template f, :user_addresses
-      .form-group
-        = f.label :email
-        = f.email_field :email, autofocus: true, class: "form-control"
-      .form-group
-        = f.label :password
-        %br/
-        = f.password_field :password, class: "form-control"
-      .form-group
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation, class: "form-control"
-      = f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary"
-= render "devise/shared/links"
+.formwrapper
+  .panel.panel-default
+    .panel-heading
+      %h4= t('.sign_up', :default => "Sign up")
+    .panel-body
+      = form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form" }) do |f|
+        = render 'devise/form', f: f
+        .form-group
+          = f.label :password, Contact.human_attribute_name(:password)
+          %br/
+          = f.password_field :password, class: "form-control"
+        .form-group
+          = f.label :password_confirmation, Contact.human_attribute_name(:password_confirmation)
+          = f.password_field :password_confirmation, class: "form-control"
+        = f.submit t('.sign_up', :default => "Sign up"), class: "btn btn-primary"
+  = render "devise/shared/links"

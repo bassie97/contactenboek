@@ -205,6 +205,9 @@ nl:
     pm: "'s middags"
   activerecord:
     models:
+      user_address:
+        one: Gebruiker adres
+        other: Gebruiker adressen
       user:
         one: Gebruiker
         other: Gebruikers
@@ -215,7 +218,30 @@ nl:
         one: Adres
         other: Adressen
     attributes:
+      user:
+        zip_code: Postcode
+        email_invalid: Ongeldig emailadres!
+        email_send: Email verstuurd!
+        send_email: Email versturen
+        back: Terug
+        house_phone: Telefoon
+        mobile_phone: Mobiel
+        email: E-mail
+        avatar: Profiel afbeelding
+        date_of_birth: Geboortedatum
+        log_out: Uitloggen
+        user_addresses:
+          remove: Verwijder adres
+          country: Land
+          city: Stad
+          street: Straat2
+          house_number: nummer/toevoeging
+          address_kind: Address type
+          zip_code: Postcode
       contact:
+        password: Wachtwoord
+        password_confirmation: Wachtwoord bevestigen
+        current_password: Huidig wachtwoord
         about: Over
         email_invalid: Ongeldig emailadres!
         email_send: Email verstuurd!
@@ -233,7 +259,7 @@ nl:
         there: Er
         is: is
         are: zijn
-        date_of_birth: geboortedatum
+        date_of_birth: Geboortedatum
         show: Bekijken
         edit: Bewerken
         destroy: Verwijderen
@@ -241,15 +267,22 @@ nl:
         sure: Weet u het zeker?
         errormsg: hebben er voor gezorgd
         name: naam
+        add_address: Adres toevoegen
         search_contacts: Contact zoeken
       address:
         remove: Verwijder adres
-        add_address: Adres toevoegen
         country: Land
         city: Stad
         street: Straat
         house_number: nummer/toevoeging
         address_kind: Address type
         zip_code: Postcode
-      user:
-        log_out: Uitloggen
+      user/user_addresses: &user_addresses
+        remove: Verwijder adres
+        country: Land
+        city: Stad
+        street: Straat
+        house_number: nummer/toevoeging
+        address_kind: Address type
+        zip_code: Postcode
+      user_address: *user_addresses

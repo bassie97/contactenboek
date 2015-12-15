@@ -1,5 +1,5 @@
 class Address < ActiveRecord::Base
-  belongs_to :contact
+  belongs_to :addressable, polymorphic: true
   validates :zip_code, presence: true, format: { with: /[1-9][0-9]{3}\s?[a-zA-Z]{2}/}
   validates :street, presence: true
   def full_address

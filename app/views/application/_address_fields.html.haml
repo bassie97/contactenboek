@@ -3,10 +3,10 @@
   .form-group
   - [:address_kind, :country, :city, :street, :house_number].each do |attr|
     .form-group
-      = f.label attr, :class => "control-label"
+      = f.label Address.human_attribute_name(attr), :class => "control-label"
       = f.text_field attr, :class => "form-control"
   .form-group
-    = f.label :zip_code, :class => "control-label"
+    = f.label Address.human_attribute_name(:zip_code), :class => "control-label"
     = #f.text_field :zip_code, :class => "form-control", required: true, pattern: "[1-9][0-9]{3}[a-zA-Z]{2}", 'data-error': 'Ongeldige postcode'
     = f.text_field :zip_code, :class => "form-control", placeholder: '0000AA'
     .help-block

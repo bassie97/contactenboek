@@ -2,7 +2,7 @@ module AddressesHelper
   def new_fields_template(f, association, options={})
     options[:object] ||= f.object.class.reflect_on_association(association).klass.new
     options[:partial] ||= association.to_s.singularize + "_fields"
-    options[:template] ||= association.to_s + "_fields"
+    options[:template] ||= association.to_s. + "_fields"
     options[:f] ||= :f
 
     tmpl = f.fields_for(association, options[:object], :child_index => "new_#{association}") do |b|
@@ -20,6 +20,6 @@ module AddressesHelper
   end
 
   def remove_child_button
-    "<div class='input-group-btn'><a class='remove_child btn btn-default'><i class='glyphicon glyphicon-trash'></i></a></div>".html_safe
+    "<a class='remove_child btn btn-default'><i class='glyphicon glyphicon-trash'></i></a>".html_safe
   end
 end

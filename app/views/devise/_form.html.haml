@@ -1,0 +1,21 @@
+.form-group
+  %label= Contact.human_attribute_name(:name).capitalize
+  = f.text_field :name, class: 'form-control'
+.form-group
+  %label= Contact.human_attribute_name(:add_address)
+  = add_child_button("<i class='glyphicon glyphicon-plus'></i>", :addresses, "addresses")
+  #addresses
+    = f.fields_for :addresses do |builder|
+      = render partial: "address_fields", :f => builder
+  = new_fields_template f, :addresses
+
+- [:house_phone, :mobile_phone, :email].each do |attr|
+  .form-group
+    = f.label Contact.human_attribute_name(attr)
+    = f.text_field attr, class: 'form-control'
+.form-group
+  = f.label Contact.human_attribute_name(:date_of_birth)
+  = f.date_select :date_of_birth, start_year: 1900,  class: 'form-control'
+.form-group
+  = f.label Contact.human_attribute_name(:avatar)
+  = f.file_field :avatar
