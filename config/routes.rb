@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   get 'over/index' => 'over#index'
 
   resources :users
+  resources :messages, only: [:index, :create]
+  resources :chatsessions, only: [:new, :create]
+  resources :friendships do
 
+  end
   # devise_for :users, :controllers => { registrations: 'registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -9,7 +9,7 @@
           = add_child_button("<i class='glyphicon glyphicon-plus'></i>", :addresses, "addresses")
           #addresses
             = f.fields_for :addresses do |builder|
-              = render "address_fields", :f => builder
+              = render partial: "application/address_fields",  locals: {:f => builder}
           = new_fields_template f, :addresses
       - [:house_phone, :mobile_phone, :email].each do |attr|
         .form-group

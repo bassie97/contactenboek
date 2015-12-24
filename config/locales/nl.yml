@@ -201,7 +201,7 @@ nl:
     formats:
       default: "%a %d %b %Y %H:%M:%S %Z"
       long: "%d %B %Y %H:%M"
-      short: "%d %b %H:%M"
+      short: "%d %b %Y %H:%M"
     pm: "'s middags"
   activerecord:
     models:
@@ -217,8 +217,19 @@ nl:
       adress:
         one: Adres
         other: Adressen
+      friendship:
+        one: Vriendschap
+        other: Vriendschappen
     attributes:
+      friendship:
+        friend: Vriend
+        friends: Vrienden
+        my_friendships: Mijn vrienden
       user:
+        drag: Sleep om friend toe te voegen
+        add_user: Voeg een vriend toe
+        friend/friend_id: Vriend
+        show: Account
         zip_code: Postcode
         email_invalid: Ongeldig emailadres!
         email_send: Email verstuurd!
@@ -230,14 +241,7 @@ nl:
         avatar: Profiel afbeelding
         date_of_birth: Geboortedatum
         log_out: Uitloggen
-        user_addresses:
-          remove: Verwijder adres
-          country: Land
-          city: Stad
-          street: Straat2
-          house_number: nummer/toevoeging
-          address_kind: Address type
-          zip_code: Postcode
+        edit: Wijzigen
       contact:
         password: Wachtwoord
         password_confirmation: Wachtwoord bevestigen

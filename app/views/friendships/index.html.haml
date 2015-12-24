@@ -1,0 +1,60 @@
+.row
+  .col-md-6
+    .panel.panel-success
+      .panel-heading
+        %h4.panel-title
+          = Friendship.human_attribute_name(:my_friendships)
+      %table.link-table.table.table-hover
+        %tbody#my-friends
+          - @friendships.each do |friendship|
+            %tr{data: {href: user_path(friendship.friend)}}
+              %td.property{:align => "center", :valign => "center"}
+                = image_tag friendship.friend.avatar.url, class: "img-circle img-responsive table-image"
+              %td.property
+                =friendship.friend.name
+              %td.property
+                =l friendship.created_at
+              %td
+                -#TODO verwijder knop verwijderd niet het correct object
+                = link_to friendship_path(friendship), class: 'btn btn-danger', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) } do
+                  %span.glyphicon.glyphicon-remove
+                  = Contact.human_attribute_name(:destroy)
+              %td
+                =friendship.friend.id
+                Chat!
+  .col-md-6
+    #huge_button
+      %h4
+        = User.human_attribute_name(:add_user)
+      %button.btn.btn-default.add_friend_button{data: {toggle: "modal", target: ".small_friend_modal"},type: "button"}
+        -#%span.add_friend_button
+.modal.fade.small_friend_modal{tabindex: '-1', role: 'dialog', "aria-labelledby" => "smallfriendsearchmodal"}
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        %button.close{data: {dismiss: "modal"}, "aria_label" => "Close"}
+          %span{"aria-hidden" => "true"}
+            &times;
+        %h4.modal-title#gridSystemModalLabel
+          = Friendship.human_attribute_name(:friends)
+      .modal-body
+        #my-flash
+        .form-group
+          %input#search{:name => "users", :type => "text", placeholder: Contact.human_attribute_name(:search_contacts)}
+            %ul#user-search.list-group.connectedSortable
+            %ul#add_friends.list-group.connectedSortable{data: {url: friendships_path(format: :json)}}
+              %li.list-group-item.disabled.unsortable
+                = User.human_attribute_name(:drag)
+              %li.list-group-item.disabled.unsortable
+                %span.glyphicon.glyphicon-plus
+
+
+      .modal-footer
+        %button.btn.btn-default{type: "button", data: {dismiss: "modal"}}
+          Close
+%ul
+  - @friendships.each do |friendship|
+    %li
+      Vriend sinds
+      =l friendship.created_at
+      =friendship.friend.name

@@ -11,9 +11,9 @@ class RegistrationsController < Devise::RegistrationsController
         end
       end
       format.json do
-        @contact.avatar = params[:file]
-        @contact.save
-        render json: @contact.avatar
+        @user.avatar = params[:file]
+        @user.save
+        render json: @user.avatar
       end
     end
   end

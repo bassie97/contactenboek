@@ -17,6 +17,7 @@
  *
  *= require dropzone/dropzone
  *= require devise_bootstrap_views
+ *= require jquery-ui
  */
 
 @import "bootstrap-sprockets";
@@ -114,7 +115,7 @@ table#profile {
   text-align: center;
 
 }
-.new-contact{
+.new-contact, .new-user{
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -151,11 +152,10 @@ table#profile {
   text-align: center;
   }
   img {
-      //margin: 10px auto;
       position: relative;
       margin-bottom: 10px;
       margin-left: 50%;
-      transform: translatex(-50%);
+      transform: translate(-50%);
   }
   width: 50%;
   margin: 0 auto;
@@ -164,9 +164,7 @@ table#profile {
   position: absolute;
   width: 400px;
   height: 500px;
-  //margin-left: 90%;
   margin-top: 10px;
-  //float: right !important;
 }
 .btn-info {
   background-color: #a0adb7;
@@ -177,4 +175,34 @@ table#profile {
 }
 .alert {
   display: none;
+}
+.dz-image {
+  z-index: 0 !important;
+}
+.show_title {
+  text-align: center;
+}
+.panel-title {
+  text-align: center;
+}
+#huge_button {
+  width: 300px;
+  height: 340px;
+  margin: 0 auto;
+}
+
+.add_friend_button {
+  //@extend .btn;
+  //@extend .btn-default;
+  height: 300px;
+  width: 300px;
+  background-image: url("add_friend.png");
+  filter: invert(0%);
+}
+.add_friend_button:hover {
+  filter: invert(10%);
+}
+
+#add_friends {
+  min-height: 50px;
 }

@@ -1,0 +1,14 @@
+%tr{data: {href: user_path(friendship.friend)}}
+  %td.property{:align => "center", :valign => "center"}
+    = image_tag friendship.friend.avatar.url, class: "img-circle img-responsive table-image"
+  %td.property
+    =friendship.friend.name
+  %td.property
+    =l friendship.created_at
+  %td
+    = link_to friendship_path(friendship), class: 'btn btn-danger', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) } do
+      %span.glyphicon.glyphicon-remove
+      = Contact.human_attribute_name(:destroy)
+  %td
+    =friendship.friend.id
+    Chat!

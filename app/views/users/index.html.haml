@@ -1,2 +1,12 @@
-%p
-  ayyy
+%table#contacts-table.table.table-bordered.table-hover
+  %thead
+    %tr
+      %th Name
+      %th E-mail
+      %th Follow
+
+  %tbody
+    = render @users.order(name: :asc)
+.form-group
+  %input#search{:name => "users", :type => "text", placeholder: User.human_attribute_name(:search_user)}
+    #user-search

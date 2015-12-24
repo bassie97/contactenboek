@@ -2,26 +2,27 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on "page:change", ->
+  Dropzone.autoDiscover = false
   $("#my-awesome-dropzone").dropzone()
 
 $(document).on 'ready page:load', ->
 #  addValidator()
-  $(document).on 'click', '#contacts-table tbody tr', ->
-    link = $(this).data('href')
+  $('tbody').on 'click', '.property', ->
+    link = $(this).parent().data('href')
     console.log("test")
     Turbolinks.visit(link)
     return
-  $(document).on 'click', '#contacts-table tbody tr a', (e)->
-    e.stopPropagation()
 
-  $(document).on 'click', '#collapse li', ->
+  $('#collapse li').on 'click', ->
     link = $(this).data('href')
     Turbolinks.visit(link)
     return
 
   Dropzone.options.myAwesomeDropzone =
     paramName: "file",
-    maxFilesize: 2,
+    maxFilesize: 1,
+    addRemoveLinks: true,
+    maxFiles: 1,
     success: (file, done) ->
       $('#profile thead th img').attr('src', done.avatar.url)
 

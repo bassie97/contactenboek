@@ -1,2 +1,9 @@
-%p
-  =@user.email
+.show_title
+  %h4
+    = User.human_attribute_name(:show)
+= render partial: 'application/profile', locals: {type: @user}
+= link_to Contact.human_attribute_name(:back).capitalize, friendships_path, class: 'btn btn-primary'
+%ul
+  - @user.friends.each do|f|
+    %li
+      = f.name

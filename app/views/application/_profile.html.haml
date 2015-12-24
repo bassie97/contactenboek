@@ -1,0 +1,22 @@
+%table#profile
+  %thead
+    %tr
+      %th{colspan: 2}
+        = image_tag type.avatar.url, class: "img-circle img-responsive"
+        -unless type != User && current_user != type
+          = form_tag user_path(type), method: 'patch', id: 'my-awesome-dropzone', class: 'dropzone'
+        -else
+          =link_to 'Vriend toevoegen', friendships_path(friend_id: type), method: :post
+  %tbody
+    - [:name, :house_phone, :mobile_phone, :email].each do |attr|
+      %tr
+        %th= Contact.human_attribute_name(attr)
+        %td= type.send(attr)
+    %tr
+      %th= Contact.human_attribute_name(:date_of_birth)
+      %td= l type.date_of_birth, format: :long
+
+    - type.addresses.each do |address|
+      %tr
+        %th= address.address_kind
+        %td= address.full_address

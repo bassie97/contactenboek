@@ -4,23 +4,6 @@
     = Contact.human_attribute_name(:send_email).capitalize
   .collapse#email-form
     = render 'email'
-%table#profile
-  %thead
-    %tr
-      %th{colspan: 2}
-        = image_tag @contact.avatar.url, class: "img-circle img-responsive"
-        = form_tag contact_path(@contact), method: 'patch', id: 'my-awesome-dropzone', class: 'dropzone'
-  %tbody
-    - [:name, :house_phone, :mobile_phone, :email].each do |attr|
-      %tr
-        %th= Contact.human_attribute_name(attr)
-        %td= @contact.send(attr)
-    %tr
-      %th= Contact.human_attribute_name(:date_of_birth)
-      %td= l @contact.date_of_birth, format: :long
-
-    - @contact.addresses.each do |address|
-      %tr
-        %th= address.address_kind
-        %td= address.full_address
-= link_to Contact.human_attribute_name(:back).capitalize, contacts_path, class: 'btn btn-primary'
+= render partial: 'application/profile', locals: {type: @contact}
+= link_to contacts_path, class: 'btn btn-primary' do
+  = Contact.human_attribute_name(:back).capitalize

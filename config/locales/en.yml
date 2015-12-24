@@ -212,6 +212,9 @@ en:
           one: address
           other: addresses
       attributes:
+        user:
+          show: My account
+          drag: Drag here to add friend
         contact:
           title: My contactsbook
           destroy: Delete

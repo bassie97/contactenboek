@@ -1,6 +1,16 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    respond_to do |format|
+      format.html do
+        @users = User.all
+      end
+      format.json do
+        render json: User.query(params[:q], current_user).as_json(:only => [:id, :name, :email, :avatar])
+      end
+    end
+  end
 
   def create
     @user = User.new(user_params)
@@ -10,6 +20,16 @@ class UsersController < ApplicationController
       error = @user.errors.full_messages.to_sentence
       flash.now[:error] = error
       render :new
+    end
+  end
+
+  def update
+    respond_to do |format|
+      format.json do
+        current_user.avatar = params[:file]
+        current_user.save
+        render json: current_user.avatar
+      end
     end
   end
 
