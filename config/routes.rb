@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   get 'over/index' => 'over#index'
 
   resources :users
-  resources :messages, only: [:index, :create]
-  resources :chatsessions, only: [:new, :create]
+
   resources :friendships do
+    resources :messages
 
   end
   # devise_for :users, :controllers => { registrations: 'registrations' }

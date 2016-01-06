@@ -1,0 +1,15 @@
+%li{"data-user-id" => message.user.id, class: user}
+  .box
+    .chat-header
+      %span.chat-img
+        %img.img-circle.img-responsive.table-image{:alt => "User Avatar", :src => message.user.avatar}/
+      .chat-header-text
+        %strong.primary-font
+          = message.user.name
+        .time-box
+          %small.text-muted
+            %span.glyphicon.glyphicon-time
+            = "#{time_ago_in_words(message.created_at)} geleden"
+    .chat-body
+      %p
+        =message.content

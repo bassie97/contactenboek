@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216093312) do
+ActiveRecord::Schema.define(version: 20160104134648) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "country",          limit: 255
@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(version: 20151216093312) do
   end
 
   add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true, using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "friendship_id", limit: 4
+    t.string   "user_id",       limit: 255
+    t.text     "content",       limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
 
   create_table "overs", force: :cascade do |t|
     t.datetime "created_at", null: false

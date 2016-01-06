@@ -5,6 +5,8 @@ $(document).on "page:change", ->
   Dropzone.autoDiscover = false
   $("#my-awesome-dropzone").dropzone()
 
+
+
 $(document).on 'ready page:load', ->
 #  addValidator()
   $('tbody').on 'click', '.property', ->

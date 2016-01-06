@@ -20,8 +20,8 @@
                   %span.glyphicon.glyphicon-remove
                   = Contact.human_attribute_name(:destroy)
               %td
-                =friendship.friend.id
-                Chat!
+                -#TODO als iemand en vriend toevoegd wordt die vriendschap niet wederzijds weergegeven note: denk aan pending, rejected, accepted
+                = link_to  "Chat", friendship
   .col-md-6
     #huge_button
       %h4
