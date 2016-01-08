@@ -1,5 +1,5 @@
 .row
-  .col-md-6
+  .col-md-7
     .panel.panel-success
       .panel-heading
         %h4.panel-title
@@ -7,22 +7,39 @@
       %table.link-table.table.table-hover
         %tbody#my-friends
           - @friendships.each do |friendship|
-            %tr{data: {href: user_path(friendship.friend)}}
-              %td.property{:align => "center", :valign => "center"}
-                = image_tag friendship.friend.avatar.url, class: "img-circle img-responsive table-image"
-              %td.property
+            %tr
+              %td
                 =friendship.friend.name
-              %td.property
-                =l friendship.created_at
               %td
-                -#TODO verwijder knop verwijderd niet het correct object
-                = link_to friendship_path(friendship), class: 'btn btn-danger', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) } do
-                  %span.glyphicon.glyphicon-remove
-                  = Contact.human_attribute_name(:destroy)
-              %td
-                -#TODO als iemand en vriend toevoegd wordt die vriendschap niet wederzijds weergegeven note: denk aan pending, rejected, accepted
                 = link_to  "Chat", friendship
-  .col-md-6
+          - @inverse_friendships.each do  |inverse_friendship|
+            %tr
+              %td
+                =inverse_friendship.inverse_friend.name
+              %td
+                = link_to  "Chat", inverse_friendship
+            -#%tr{data: {href: user_path(friendship.friend)}}
+            -#  %td.property{:align => "center", :valign => "center"}
+            -#    = image_tag friendship.friend.avatar.url, class: "img-circle img-responsive table-image"
+            -#  %td.property
+            -#    =friendship.friend.name
+            -#  %td.property
+            -#    =l friendship.created_at
+            -#  %td.property
+            -#    = Friendship.human_attribute_name(:friendship_request) + ": "
+            -#    -if friendship.authorized
+            -#      = Friendship.human_attribute_name(:accepted)
+            -#    -else
+            -#      = Friendship.human_attribute_name(:pending)
+            -#  %td
+            -#    -#TODO verwijder knop verwijderd niet het correct object
+            -#    = link_to friendship_path(friendship), class: 'btn btn-danger', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) } do
+            -#      %span.glyphicon.glyphicon-remove
+            -#      = Contact.human_attribute_name(:destroy)
+            -#  %td
+            -#    -#TODO als iemand en vriend toevoegd wordt die vriendschap niet wederzijds weergegeven note: denk aan pending, rejected, accepted
+            -#    = link_to  "Chat", friendship
+  .col-md-5
     #huge_button
       %h4
         = User.human_attribute_name(:add_user)
@@ -52,9 +69,9 @@
       .modal-footer
         %button.btn.btn-default{type: "button", data: {dismiss: "modal"}}
           Close
-%ul
-  - @friendships.each do |friendship|
-    %li
-      Vriend sinds
-      =l friendship.created_at
-      =friendship.friend.name
+-#%ul
+-#  - @friendships.each do |friendship|
+-#    %li
+-#      Vriend sinds
+-#      =l friendship.created_at
+-#      =friendship.friend.name

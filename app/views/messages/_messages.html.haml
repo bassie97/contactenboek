@@ -1,7 +1,11 @@
 .panel.panel-primary.chat-panel
   .panel-heading
     %span.glyphicon.glyphicon-comment
-    Chat
+    -if friendship.friend == current_user
+      = friendship.inverse_friend.name
+    -else
+      = friendship.friend.name
+
     .btn-group.pull-right
       %button.btn.btn-default.btn-xs.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
         %span.glyphicon.glyphicon-chevron-down
@@ -32,7 +36,6 @@
       %section#messages{"data-channel" => "messages", "data-message-id" => friendship.id}
         - friendship.messages.each do |message|
           = render partial: 'messages/message', locals: { message: message, user: (message.user.id == current_user.id ? 'current-user' : 'other-user') }
-        - #render friendship.messages
 
   .panel-footer
     = form_for [ friendship, Message.new ], remote: true do |form|

@@ -1,7 +1,8 @@
 class FriendshipsController < ApplicationController
 
   def index
-    @friendships = current_user.friendships.all
+    @friendships = current_user.friendships
+    @inverse_friendships = current_user.inverse_friendships
   end
 
   def show
@@ -9,7 +10,7 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    @friendship = current_user.friendships.build(friend_id: params[:friend_id])
+    @friendship = current_user.friendships.build(friend_id: params[:friend_id], user_id: params[current_user.id])
     errors = nil
     success = nil
     if @friendship.save

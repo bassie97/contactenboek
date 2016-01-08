@@ -225,6 +225,10 @@ nl:
         friend: Vriend
         friends: Vrienden
         my_friendships: Mijn vrienden
+        friendship_request: Vriendschapsverzoek
+        accepted: Geaccepteerd
+        pending: Lopend
+        denied: Geweigerd
       user:
         drag: Sleep om friend toe te voegen
         add_user: Voeg een vriend toe

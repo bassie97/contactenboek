@@ -1,13 +1,13 @@
 class MessagesController < ApplicationController
-  before_action :set_message
+  before_action :set_chatroom
 
   def create
     @message = Message.create! content: params[:message][:content], friendship: @friendship, user: current_user
+    render nothing: true
   end
 
   private
-  def set_message
-    #todo: fiend friendship, as imaginary chatroom. need to know both user- and friend-id
+  def set_chatroom
     @friendship = Friendship.find(params[:friendship_id])
   end
 end

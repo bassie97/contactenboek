@@ -1,6 +1,5 @@
-#$('.chat').on 'click', ->
 $(document).on 'ready page:load', ->
-  scrolldown()
+  $("#scrollmessages").scrollTop($("#messages").prop("scrollHeight"))
 
 App.messages = App.cable.subscriptions.create 'MessagesChannel',
   collection: -> $("[data-channel='messages']")
@@ -12,13 +11,14 @@ App.messages = App.cable.subscriptions.create 'MessagesChannel',
     , 1000
 
   received: (data) ->
-    console.log("message recieved")
+    console.log(data)
 
     message = $(data.message)
     if @userIsCurrentUser(message)
       message.addClass('current-user')
     else
       message.addClass('other-user')
+      $.notify("Bericht ontvangen!",'notice');
 
     @collection().append(message)
     scrolldown()
