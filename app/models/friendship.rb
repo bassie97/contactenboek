@@ -10,6 +10,12 @@ class Friendship < ActiveRecord::Base
   # an example of how to get only the unauthorized friends
   scope :unauthorized, -> {where(authorized: false)}
 
+  scope :for, -> (user) {where("user_id = ? OR friend_id = ?", user.id, user.id)}
+
+  def inverse?(user)
+    user.id == friend_id
+  end
+
   def users_are_not_already_friends
     combinations = ["user_id = #{user_id} AND friend_id = #{friend_id}",
                     "user_id = #{friend_id} AND friend_id = #{user_id}"]

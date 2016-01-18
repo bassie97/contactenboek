@@ -6,7 +6,7 @@ class FriendshipsController < ApplicationController
   end
 
   def show
-    @friendship = Friendship.find(params[:id])
+    @friendship = Friendship.for(current_user).find(params[:id])
   end
 
   def create
@@ -39,8 +39,17 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = Friendship.find(params[:id])
-    @friendship.destroy
+
+    if Friendship.find_by(id: params[:id]).present?
+      @friendship = Friendship.find(params[:id])
+      if @friendship.user == current_user || @friendship.friend == current_user
+        @friendship.destroy
+      else
+        flash[:notice] = "Vriendschap bestaat niet!"
+      end
+    else
+      flash[:notice] = "Vriendschap bestaat niet!"
+    end
     redirect_to friendships_path
   end
 end

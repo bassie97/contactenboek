@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
 
   private
   def set_chatroom
-    @friendship = Friendship.find(params[:friendship_id])
+    @friendship = current_user.friendships.find_by(id: params[:friendship_id])
+    @friendship = current_user.inverse_friendships.find_by(id: params[:friendship_id]) unless  @friendship
   end
 end

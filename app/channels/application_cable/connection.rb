@@ -10,7 +10,6 @@ module ApplicationCable
     protected
     def find_verified_user
       verified_user = User.find_by(id: cookies.signed['user.id'])
-      puts(verified_user.name.inspect)
       if verified_user && cookies.signed['user.expires_at'] > Time.now
         verified_user
       else

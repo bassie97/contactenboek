@@ -1,0 +1,17 @@
+- @friendships.each do |friendship|
+  - friend = friendship.inverse?(current_user) ? friendship.inverse_friend : friendship.friend
+  %tr{data: {href: user_path(friend)}}
+    %td.property{:align => "center", :valign => "center"}
+      = image_tag friend.avatar.url, class: "img-circle img-responsive table-image"
+    %td.property
+      = friend.name
+    %td.property
+      =l friendship.created_at
+    %td
+      -#TODO verwijder knop verwijderd niet het correct object
+      = link_to friendship_path(friendship), class: 'btn btn-danger', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) } do
+        %span.glyphicon.glyphicon-remove
+        = Contact.human_attribute_name(:destroy)
+    %td
+      -#TODO als iemand en vriend toevoegd wordt die vriendschap niet wederzijds weergegeven note: denk aan pending, rejected, accepted
+      = link_to  "Chat", friendship

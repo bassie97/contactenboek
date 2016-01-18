@@ -6,39 +6,10 @@
           = Friendship.human_attribute_name(:my_friendships)
       %table.link-table.table.table-hover
         %tbody#my-friends
-          - @friendships.each do |friendship|
-            %tr
-              %td
-                =friendship.friend.name
-              %td
-                = link_to  "Chat", friendship
-          - @inverse_friendships.each do  |inverse_friendship|
-            %tr
-              %td
-                =inverse_friendship.inverse_friend.name
-              %td
-                = link_to  "Chat", inverse_friendship
-            -#%tr{data: {href: user_path(friendship.friend)}}
-            -#  %td.property{:align => "center", :valign => "center"}
-            -#    = image_tag friendship.friend.avatar.url, class: "img-circle img-responsive table-image"
-            -#  %td.property
-            -#    =friendship.friend.name
-            -#  %td.property
-            -#    =l friendship.created_at
-            -#  %td.property
-            -#    = Friendship.human_attribute_name(:friendship_request) + ": "
-            -#    -if friendship.authorized
-            -#      = Friendship.human_attribute_name(:accepted)
-            -#    -else
-            -#      = Friendship.human_attribute_name(:pending)
-            -#  %td
-            -#    -#TODO verwijder knop verwijderd niet het correct object
-            -#    = link_to friendship_path(friendship), class: 'btn btn-danger', method: :delete, data: { confirm: Contact.human_attribute_name(:sure) } do
-            -#      %span.glyphicon.glyphicon-remove
-            -#      = Contact.human_attribute_name(:destroy)
-            -#  %td
-            -#    -#TODO als iemand en vriend toevoegd wordt die vriendschap niet wederzijds weergegeven note: denk aan pending, rejected, accepted
-            -#    = link_to  "Chat", friendship
+          -#- if @friendships.any?
+          = render partial: 'friendships/friendships', :locals => {:@friendships => @friendships + @inverse_friendships, inverse: false}
+          -#- if @inverse_friendships.any?
+          -#= render partial: 'friendships/friendships', :locals => {friendships: @inverse_friendships, inverse: true}
   .col-md-5
     #huge_button
       %h4
@@ -64,8 +35,6 @@
                 = User.human_attribute_name(:drag)
               %li.list-group-item.disabled.unsortable
                 %span.glyphicon.glyphicon-plus
-
-
       .modal-footer
         %button.btn.btn-default{type: "button", data: {dismiss: "modal"}}
           Close

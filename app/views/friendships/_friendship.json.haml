@@ -2,7 +2,7 @@
   %td.property{:align => "center", :valign => "center"}
     = image_tag friendship.friend.avatar.url, class: "img-circle img-responsive table-image"
   %td.property
-    =friendship.friend.name
+    = friendship.friend.name
   %td.property
     =l friendship.created_at
   %td
@@ -10,5 +10,4 @@
       %span.glyphicon.glyphicon-remove
       = Contact.human_attribute_name(:destroy)
   %td
-    =friendship.friend.id
-    Chat!
+    = link_to  "Chat", friendship
