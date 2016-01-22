@@ -196,7 +196,7 @@ table#profile {
   //@extend .btn-default;
   height: 300px;
   width: 300px;
-  background-image: url("add_friend.png");
+  background-image: asset-url("add_friend.png");
   filter: invert(0%);
 }
 .add_friend_button:hover {
