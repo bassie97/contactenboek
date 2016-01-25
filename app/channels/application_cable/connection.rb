@@ -4,6 +4,7 @@ module ApplicationCable
 
     def connect
       self.current_user = find_verified_user
+      puts('connect')
       logger.add_tags 'ActionCable', current_user.name
     end
 
@@ -13,6 +14,7 @@ module ApplicationCable
       if verified_user && cookies.signed['user.expires_at'] > Time.now
         verified_user
       else
+        puts('failed')
         reject_unauthorized_connection
       end
     end

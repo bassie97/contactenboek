@@ -5,13 +5,14 @@ App.messages = App.cable.subscriptions.create 'MessagesChannel',
   collection: -> $("[data-channel='messages']")
 
   connected: ->
+    console.log('connected')
     setTimeout =>
       @followCurrentMessage()
       @installPageChangeCallback()
     , 1000
 
   received: (data) ->
-
+    console.log(data)
     message = $(data.message)
     if @userIsCurrentUser(message)
       message.addClass('current-user')
@@ -24,14 +25,17 @@ App.messages = App.cable.subscriptions.create 'MessagesChannel',
 
 
   userIsCurrentUser: (message) ->
+    console.log(message)
     message.data('user-id') == parseInt($('meta[name=current-user]').attr('id'))
 
   followCurrentMessage: ->
 
     if messageId = @collection().data('message-id')
       @perform 'follow', message_id: messageId
+      console.log('follow')
     else
       @perform 'unfollow'
+      console.log('unfollow')
 
   installPageChangeCallback: ->
     unless @installedPageChangeCallback
