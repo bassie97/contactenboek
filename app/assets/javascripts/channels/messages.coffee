@@ -13,7 +13,7 @@ App.messages = App.cable.subscriptions.create 'MessagesChannel',
 
   received: (data) ->
     console.log(data)
-    $('#text-recieved').val('')
+    $('#btn-input').val('')
     message = $(data.message)
     if @userIsCurrentUser(message)
       message.addClass('current-user')
