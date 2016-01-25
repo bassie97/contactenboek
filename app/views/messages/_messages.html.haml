@@ -40,6 +40,6 @@
   .panel-footer
     = form_for [ friendship, Message.new ], remote: true do |form|
       .input-group
-        = form.text_field :content, class: 'form-control input-sm', id: 'btn-input', :placeholder => "Type your message here...", :type => "text"
+        = form.text_field :content, class: 'form-control input-sm', id: 'btn-input text-recieved', :placeholder => "Type your message here...", :type => "text"
         %span.input-group-btn
           = form.submit 'Send', class: 'btn btn-warning btn-sm', id: 'btn-chat'
