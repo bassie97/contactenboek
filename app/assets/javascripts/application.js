@@ -15,7 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require channels
-//= require notify
 //= require_tree .
 //= require dropzone
 //= require jquery-ui
+//= require notify
